@@ -1,0 +1,17 @@
+<h1>New Book</h1>
+<tbody>
+  <tr>
+   <th>Title</th>
+   <th>Opinion</th>
+  </tr>
+  <% form_with model: @book, url: books_path, local: true do |f|  %>
+  <tr>
+    <td><%= f.text_field :title %></td>
+    <td><%= f.text_area :body %></td>
+  </tr>
+</tbody>
+
+
+
+
+

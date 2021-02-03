@@ -1,0 +1,45 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-lg-5  mx-auto">
+    <h2>User info</h2>
+    
+  <% if @user.errors.any? %>
+  <% if @user.errors.count == 1 %>
+  <p class="error"><%= @user.errors.count %>errors :</p>
+  <ul class="error">
+   <% @user.errors.full_messages.each do |error| %>
+   <li class="error"><%= error %></li>
+   <% end %>
+  </ul>
+  <% end %>
+  
+  <% if @user.errors.count >= 2 %>
+  <p class="error"><%= @user.errors.count %>errors :</p>
+  <ul class="error">
+   <% @user.errors.full_messages.each do |error| %>
+   <li class="error"><%= error %></li>
+   <% end %>
+  </ul>
+  <% end %>
+  
+  <% end %>
+
+<%= form_with model: @user, local: true do |f| %>
+<div clss="form-group">
+ <label for="user_name">Name</label>
+  <%= f.text_field :name,class: "form-control name" %>
+</div>
+<div clss="form-group">
+  <label for="user_image">Image</label>
+   <%= f.attachment_field :profile_image,class: "form-control-file user_image" %>
+</div>
+<div class="form-group">
+   <label for="user_introduction">Introduction</label>
+  <%= f.text_area :introduction ,placeholder: "introduction",class: "form-control introduction" %>
+</div>
+<div class="form-group">
+  <%= f.submit "Update User",class: "btn btn-secondary" %>
+</div>
+<% end %>
+</div>
+</div>
